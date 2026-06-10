@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Crimson+Pro:wght@400;600&display=swap');
+
+@font-face {
+  font-family: 'grenette-pro';
+  src: url('./assets/fonts/grenette-regular-pro.woff2') format('woff2'),
+       url('./assets/fonts/grenette-regular-pro.woff') format('woff'),
+       url('./assets/fonts/grenette-regular-pro.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'grenette-pro';
+  src: url('./assets/fonts/grenette-italic-pro.woff2') format('woff2'),
+       url('./assets/fonts/grenette-italic-pro.woff') format('woff'),
+       url('./assets/fonts/grenette-italic-pro.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family-sans);
+  background: var(--color-grey-100);
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+@media (max-width: 500px) {
+  html, body {
+    height: 100%;
+    overflow: hidden;
+  }
+  #root {
+    padding: 0;
+    height: 100dvh;
+    min-height: unset;
+    overflow: hidden;
+    align-items: stretch;
+  }
+}
+
+/* Remove iOS tap highlight globally; baseline press feedback for all buttons */
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+button:active {
+  opacity: 0.65;
+  transition: none;
+}
+
+/* Icon/nav buttons — grey background flash, restore opacity */
+.btn-icon:active {
+  opacity: 1 !important;
+  background: rgba(0, 0, 0, 0.06) !important;
+}
+
+/* Full-width action buttons — scale + slight opacity */
+.btn-action:active {
+  opacity: 0.8;
+  transform: scale(0.98);
+}
+
+/* Selection pills & option cards — tactile scale */
+.btn-pill:active {
+  opacity: 1;
+  transform: scale(0.95);
+}
+
+.dropdown-item:active {
+  background: var(--color-grey-100);
+}
+
+@media (hover: hover) {
+  .dropdown-item:hover {
+    background: var(--color-grey-100);
+  }
+}
+
+/* Override TextArea to match Input focus style */
+.arbor-textarea-wrapper textarea:focus {
+  box-shadow: none !important;
+  outline: 3px solid rgba(60, 173, 81, 0.2) !important;
+  outline-offset: 0px;
+  border-color: #3cad51 !important;
+}
+
+/* Remove hover borders — not needed on mobile */
+.arbor-textarea-wrapper textarea:hover:not(:focus),
+.arbor-input-wrapper .arbor-input:hover:not(:focus) {
+  border-color: var(--color-grey-200) !important;
+  outline: none !important;
+}
+
+/* Reset Input border and outline when not focused */
+.arbor-input-wrapper:not(:focus-within) .arbor-input {
+  border-color: var(--color-grey-300) !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Hide browser-native calendar/clock icons from date/time inputs */
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+/* Hide scrollbar inside time picker drums */
+.time-drum::-webkit-scrollbar { display: none; }
+
+/* Hide scrollbar — used for horizontally scrollable rails */
+.no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+/* Paper grain texture — SVG fractal noise at ~3.5% opacity, tiled */
+.paper-grain {
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='256' height='256' filter='url(%23n)' opacity='0.12'/></svg>");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* Prevent TextArea and Input from overflowing their container */
+.arbor-textarea-wrapper,
+.arbor-input-wrapper {
+  width: 100%;
+  max-width: 100%;
+}
+.arbor-textarea-wrapper textarea {
+  max-width: 100%;
+  font-size: 16px !important;
+}
+
